@@ -129,7 +129,7 @@ const Modal = ({
           e.stopPropagation();
           setIsShowModal(true);
         }}
-        className="w-[50%] h-[500px] bg-white rounded-md relative"
+        className="w-[50%] h-[100vh] bg-white rounded-md relative"
       >
         <div className="h-[45px] px-4 flex items-center border-b border-gray-200">
           <span
