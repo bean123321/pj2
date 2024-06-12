@@ -9,6 +9,7 @@ import { useSelector, useDispatch } from "react-redux";
 import * as actions from "../../store/actions";
 import menuManage from "../../ultils/menuManage";
 import menuManage1 from "../../ultils/menuManage1";
+import menuManage2 from "../../ultils/menuManage2";
 
 const { AiOutlinePlusCircle, AiOutlineLogout, BsChevronDown } = icons;
 
@@ -73,18 +74,29 @@ const Header = () => {
                         <Link
                           className="flex items-center gap-2 hover:text-orange-500 text-blue-600 border-b border-gray-200 py-2"
                           key={item.id}
-                          to={item?.path}
+                          to={item.path}
                         >
                           {item.icon}
                           {item.text}
                         </Link>
                       ))
-                    : currentData?.accountType === 0 &&
-                      menuManage1.map((item) => (
+                    : currentData?.accountType === 0
+                    ? menuManage1.map((item) => (
                         <Link
                           className="flex items-center gap-2 hover:text-orange-500 text-blue-600 border-b border-gray-200 py-2"
                           key={item.id}
-                          to={item?.path}
+                          to={item.path}
+                        >
+                          {item.icon}
+                          {item.text}
+                        </Link>
+                      ))
+                    : currentData?.accountType === 3 &&
+                      menuManage2.map((item) => (
+                        <Link
+                          className="flex items-center gap-2 hover:text-orange-500 text-blue-600 border-b border-gray-200 py-2"
+                          key={item.id}
+                          to={item.path}
                         >
                           {item.icon}
                           {item.text}
@@ -104,7 +116,8 @@ const Header = () => {
               )}
             </div>
           )}
-          {currentData?.accountType === 1 && (
+          {(currentData?.accountType === 1 ||
+            currentData?.accountType === 3) && (
             <Button
               text={"Đăng tin mới"}
               textColor="text-white"

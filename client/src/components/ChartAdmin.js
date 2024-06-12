@@ -18,18 +18,18 @@ import { useDispatch, useSelector } from "react-redux";
 import { useState, useEffect } from "react";
 import * as actions from "../store/actions";
 
-const Chart = () => {
+const ChartAdmin = () => {
   const dispatch = useDispatch();
-  const { postOfCurrent } = useSelector((state) => state.post);
+  const { postOfCurrentAdmin } = useSelector((state) => state.post);
   useEffect(() => {
-    dispatch(actions.getPostsLimitAdmin());
+    dispatch(actions.getPosts());
   }, []);
 
   const [selectedYear, setSelectedYear] = useState(new Date().getFullYear());
   const [monthlyPosts, setMonthlyPosts] = useState([]);
 
   useEffect(() => {
-    const postsInSelectedYear = postOfCurrent.filter(
+    const postsInSelectedYear = postOfCurrentAdmin.filter(
       (post) => new Date(post.createdAt).getFullYear() === selectedYear
     );
 
@@ -44,23 +44,23 @@ const Chart = () => {
       });
     }
     setMonthlyPosts(monthlyPostsData);
-  }, [selectedYear, postOfCurrent]);
+  }, [selectedYear, postOfCurrentAdmin]);
 
   const handleChangeYear = (e) => {
     setSelectedYear(parseInt(e.target.value));
   };
 
   // Tính số lượng bài đăng
-  const numberOfCTCHPosts = postOfCurrent.filter(
+  const numberOfCTCHPosts = postOfCurrentAdmin.filter(
     (post) => post.categoryCode === "CTCH"
   ).length;
-  const numberOfCTMBPosts = postOfCurrent.filter(
+  const numberOfCTMBPosts = postOfCurrentAdmin.filter(
     (post) => post.categoryCode === "CTMB"
   ).length;
-  const numberOfCTPTPosts = postOfCurrent.filter(
+  const numberOfCTPTPosts = postOfCurrentAdmin.filter(
     (post) => post.categoryCode === "CTPT"
   ).length;
-  const numberOfNCTPosts = postOfCurrent.filter(
+  const numberOfNCTPosts = postOfCurrentAdmin.filter(
     (post) => post.categoryCode === "NCT"
   ).length;
   return (
@@ -180,4 +180,4 @@ const Chart = () => {
   );
 };
 
-export default Chart;
+export default ChartAdmin;

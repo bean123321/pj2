@@ -3,6 +3,7 @@ import anonAvatar from "../../assets/anh11.png";
 import { useSelector, useDispatch } from "react-redux";
 import menuSideBar from "../../ultils/menuSideBar";
 import menuSideBar1 from "../../ultils/menuSideBar1";
+import menuSideBar2 from "../../ultils/menuSideBar2";
 import { NavLink } from "react-router-dom";
 import * as actions from "../../store/actions";
 import { AiOutlineLogout } from "react-icons/ai";
@@ -37,7 +38,7 @@ const Sidebar = () => {
       </div>
       <div>
         {currentData?.accountType === 1
-          ? // Render menuSideBar nếu currentData?.accountType === 1
+          ? // Render menuSideBar if accountType is 1
             menuSideBar.map((item) => (
               <NavLink
                 className={({ isActive }) =>
@@ -51,8 +52,22 @@ const Sidebar = () => {
               </NavLink>
             ))
           : currentData?.accountType === 0
-          ? // Render menuSideBar1 nếu currentData?.accountType === 0
+          ? // Render menuSideBar1 if accountType is 0
             menuSideBar1.map((item) => (
+              <NavLink
+                className={({ isActive }) =>
+                  isActive ? activeStyle : notActiveStyle
+                }
+                key={item.id}
+                to={item?.path}
+              >
+                {item.icon}
+                {item.text}
+              </NavLink>
+            ))
+          : currentData?.accountType === 3
+          ? // Render menuSideBar2 if accountType is 3
+            menuSideBar2.map((item) => (
               <NavLink
                 className={({ isActive }) =>
                   isActive ? activeStyle : notActiveStyle

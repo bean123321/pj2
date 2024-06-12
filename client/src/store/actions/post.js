@@ -13,7 +13,8 @@ export const getPosts = () => async (dispatch) => {
     if (response?.data.err === 0) {
       dispatch({
         type: actionTypes.GET_POSTS,
-        posts: response.data.response,
+        posts: response.data.response?.rows,
+        count: response.data.response?.count,
       });
     } else {
       dispatch({

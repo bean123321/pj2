@@ -16,6 +16,8 @@ import {
   ManagePost,
   Statement,
   EditAccount,
+  ManagePostAdmin,
+  StatementAdmin,
 } from "./containers/System";
 import { path } from "./ultils/constant";
 import * as actions from "./store/actions";
@@ -64,6 +66,18 @@ function App() {
               <Route path={path.CREATE_POST} element={<CreatePost />} />
               <Route path={path.MANAGE_POST} element={<ManagePost />} />
               <Route path={path.STATEMENT_POST} element={<Statement />} />
+            </>
+          ) : currentData?.accountType === 3 ? (
+            <>
+              <Route path={path.CREATE_POST} element={<CreatePost />} />
+              <Route
+                path={path.MANAGE_POST_ADMIN}
+                element={<ManagePostAdmin />}
+              />
+              <Route
+                path={path.STATEMENT_POST_ADMIN}
+                element={<StatementAdmin />}
+              />
             </>
           ) : (
             <Route

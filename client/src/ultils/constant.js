@@ -13,6 +13,8 @@ export const path = {
   CREATE_POST: "tao-moi-bai-dang",
   MANAGE_POST: "quan-ly-bai-dang",
   STATEMENT_POST: "thong-ke",
+  MANAGE_POST_ADMIN: "quan-ly-bai-dang-admin",
+  STATEMENT_POST_ADMIN: "thong-ke-admin",
   EDIT_ACCOUNT: "sua-thong-tin-ca-nhan",
   CONTACT: "lien-he",
   DETAIL: "/chi-tiet/",
@@ -50,7 +52,7 @@ export const attention = [
   "Nội dung phải viết bằng tiếng Việt có dấu",
   "Nội dung mô tả cần ghi rõ địa chỉ cụ thể",
   "Tiêu đề tin không dài quá 100 kí tự",
+  "Khi tin đăng hết hạn hoặc đã có người thuê thì người đăng tin cần xóa bỏ tin đăng đó đi",
   "Các bạn nên điền đầy đủ thông tin vào các mục để tin đăng có hiệu quả hơn.",
-  "Để tăng độ tin cậy và tin rao được nhiều người quan tâm hơn, hãy sửa vị trí tin rao của bạn trên bản đồ bằng cách kéo icon tới đúng vị trí của tin rao.",
   "Tin đăng có hình ảnh rõ ràng sẽ được xem và gọi gấp nhiều lần so với tin rao không có ảnh. Hãy đăng ảnh để được giao dịch nhanh chóng!",
 ];

@@ -3,5 +3,7 @@ export { default as CreatePost } from "./CreatePost";
 export { default as Header } from "./Header";
 export { default as Sidebar } from "./Sidebar";
 export { default as ManagePost } from "./ManagePost";
+export { default as ManagePostAdmin } from "./ManagePostAdmin";
 export { default as Statement } from "./Statement";
+export { default as StatementAdmin } from "./StatementAdmin";
 export { default as EditAccount } from "./EditAccount";

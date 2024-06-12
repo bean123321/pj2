@@ -7,7 +7,7 @@ import moment from "moment";
 export const getPostsService = () =>
   new Promise(async (resolve, reject) => {
     try {
-      const response = await db.Post.findAll({
+      const response = await db.Post.findAndCountAll({
         raw: true,
         nest: true,
         include: [
@@ -22,8 +22,31 @@ export const getPostsService = () =>
             as: "user",
             attributes: ["name", "zalo", "phone"],
           },
+          {
+            model: db.Overview,
+            as: "overviews",
+          },
         ],
-        attributes: ["id", "title", "star", "address", "description"],
+        attributes: [
+          "id",
+          "title",
+          "star",
+          "labelCode",
+          "address",
+          "attributesId",
+          "categoryCode",
+          "priceCode",
+          "areaCode",
+          "provinceCode",
+          "description",
+          "userId",
+          "overviewId",
+          "priceNumber",
+          "areaNumber",
+          "imagesId",
+          "createdAt",
+          "updatedAt",
+        ],
       });
       resolve({
         err: response ? 0 : 1,

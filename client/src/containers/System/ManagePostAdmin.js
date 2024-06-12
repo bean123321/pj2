@@ -5,23 +5,23 @@ import moment from "moment";
 import { apiDeletePost } from "../../services";
 import { Button, UpdatePost } from "../../components";
 import Swal from "sweetalert2";
-const ManagePost = () => {
+const ManagePostAdmin = () => {
   const dispatch = useDispatch();
   const [isEdit, setIsEdit] = useState(false);
-  const { postOfCurrent, dataEdit } = useSelector((state) => state.post);
+  const { postOfCurrentAdmin, dataEdit } = useSelector((state) => state.post);
   const [updateData, setUpdateData] = useState(false);
   const [posts, setPosts] = useState([]);
 
   useEffect(() => {
-    !dataEdit && dispatch(actions.getPostsLimitAdmin());
+    !dataEdit && dispatch(actions.getPosts());
   }, [dataEdit, updateData]);
   useEffect(() => {
-    setPosts(postOfCurrent);
-  }, [postOfCurrent]);
+    setPosts(postOfCurrentAdmin);
+  }, [postOfCurrentAdmin]);
   useEffect(() => {
     !dataEdit && setIsEdit(false);
   }, [dataEdit]);
-  //console.log(postOfCurrent);
+  //console.log(postOfCurrentAdmin);
   const checkStatus = (dateString) =>
     moment(dateString, process.env.REACT_APP_FORMAT_DATE).isSameOrAfter(
       new Date().toDateString()
@@ -65,17 +65,17 @@ const ManagePost = () => {
   };
   const handleFilterByStatus = (statusCode) => {
     if (statusCode === 1) {
-      const activePost = postOfCurrent?.filter((item) =>
+      const activePost = postOfCurrentAdmin?.filter((item) =>
         checkStatus(item?.overviews?.expired?.split(" ")[3])
       );
       setPosts(activePost);
     } else if (statusCode === 0) {
-      const expiredPost = postOfCurrent?.filter(
+      const expiredPost = postOfCurrentAdmin?.filter(
         (item) => !checkStatus(item?.overviews?.expired?.split(" ")[3])
       );
       setPosts(expiredPost);
     } else if (statusCode === 2) {
-      setPosts(postOfCurrent);
+      setPosts(postOfCurrentAdmin);
     }
   };
   return (
@@ -177,4 +177,4 @@ const ManagePost = () => {
   );
 };
 
-export default ManagePost;
+export default ManagePostAdmin;

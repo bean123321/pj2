@@ -6,7 +6,7 @@ const {
   RiContactsBook2Fill,
   FcStatistics,
 } = icons;
-const menuSideBar = [
+const menuSideBar2 = [
   {
     id: 1,
     text: "Đăng tin cho thuê",
@@ -16,7 +16,7 @@ const menuSideBar = [
   {
     id: 2,
     text: "Quản lý tin đăng",
-    path: "/he-thong/quan-ly-bai-dang",
+    path: "/he-thong/quan-ly-bai-dang-admin",
     icon: <MdOutlineLibraryBooks />,
   },
   {
@@ -34,9 +34,9 @@ const menuSideBar = [
   {
     id: 5,
     text: "Thống kê báo cáo",
-    path: "/he-thong/thong-ke",
+    path: "/he-thong/thong-ke-admin",
     icon: <FcStatistics />,
   },
 ];
 
-export default menuSideBar;
+export default menuSideBar2;
